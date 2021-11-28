@@ -1,7 +1,7 @@
 const util = require('util')
 
 
-// implemetation of linked list
+// implementation of linked list
 class Node {
     constructor(value) {
         this.value = value;
@@ -62,6 +62,22 @@ class LinkedList {
         this.length++
         return this
     }
+    set(value, position) {
+        // improvement required
+        const newNode = new Node(value)
+        let temp, pervious, current = this.head
+        let i = 0
+        while (i < position) {
+            pervious = current
+            current = current.next
+            i++
+        }
+        temp = pervious.next
+        pervious.next = newNode
+        pervious.next.next = temp
+        this.length++
+        return this
+    }
 }
 const linkedList = new LinkedList()
 linkedList.push(10)
@@ -71,7 +87,8 @@ linkedList.push(40)
 linkedList.push(50)
 linkedList.push(60)
 linkedList.push(70)
-console.log(util.inspect(linkedList.pop(), false, null, true))
-console.log(util.inspect(linkedList.middleValue(), false, null, true))
-console.log(util.inspect(linkedList.shift(), false, null, true))
-console.log(util.inspect(linkedList.unshift(10), false, null, true))
+linkedList.pop()
+linkedList.middleValue()
+linkedList.shift()
+linkedList.unshift(10)
+console.log(util.inspect(linkedList.set(100, 0), false, null, true))
