@@ -48,6 +48,20 @@ class LinkedList {
         }
         return current.value
     }
+    shift() {
+        const value = this.head.next
+        this.head = value
+        this.length--
+        return this
+    }
+    unshift(value) {
+        const newNode = new Node(value)
+        let temp = this.head
+        newNode.next = temp
+        this.head = newNode
+        this.length++
+        return this
+    }
 }
 const linkedList = new LinkedList()
 linkedList.push(10)
@@ -59,3 +73,5 @@ linkedList.push(60)
 linkedList.push(70)
 console.log(util.inspect(linkedList.pop(), false, null, true))
 console.log(util.inspect(linkedList.middleValue(), false, null, true))
+console.log(util.inspect(linkedList.shift(), false, null, true))
+console.log(util.inspect(linkedList.unshift(10), false, null, true))
