@@ -28,7 +28,16 @@ class LinkedList {
         return this
     }
     pop() {
-
+        let current = this.head
+        let pervious = this.head
+        while (current.next !== null) {
+            pervious = current
+            current = current.next
+        }
+        pervious.next = null
+        this.tail = pervious
+        this.length--
+        return this
     }
 }
 const linkedList = new LinkedList()
@@ -39,4 +48,4 @@ linkedList.push(40)
 linkedList.push(50)
 linkedList.push(60)
 linkedList.push(70)
-console.log(util.inspect(linkedList.push(80), false, null, true))
+console.log(util.inspect(linkedList.pop(), false, null, true))
