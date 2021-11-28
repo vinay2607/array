@@ -39,6 +39,15 @@ class LinkedList {
         this.length--
         return this
     }
+    middleValue() {
+        const middleNumber = Math.floor(this.length / 2)
+        let i = 1, current = this.head
+        while (i < middleNumber) {
+            current = current.next
+            i++
+        }
+        return current.value
+    }
 }
 const linkedList = new LinkedList()
 linkedList.push(10)
@@ -49,3 +58,4 @@ linkedList.push(50)
 linkedList.push(60)
 linkedList.push(70)
 console.log(util.inspect(linkedList.pop(), false, null, true))
+console.log(util.inspect(linkedList.middleValue(), false, null, true))
